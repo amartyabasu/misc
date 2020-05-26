@@ -3,8 +3,11 @@ from pymongo import MongoClient
 
 def main():
     print("Hello!")
-    client = MongoClient("mongodb+srv://amartya:blistering_barnacles@theghostempire-ozfmw.mongodb.net/test?retryWrites=true&w=majority")
-
+    try:
+        client = MongoClient("mongodb+srv://amartya:blistering_barnacles@theghostempire-ozfmw.mongodb.net/test?retryWrites=true&w=majority")
+    except ConnectionError:
+        print("Server not available")
+        
     bloom_test = BloomFilter(20, 0.02)
     bloom_test.add("basu")
     bloom_test.add("basu")
